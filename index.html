@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Entreprises d'Électricité en Seine-Maritime (76)</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #111;
+    }
+    header h1 {
+      margin: 0;
+    }
+    .search-container {
+      padding: 20px;
+      text-align: center;
+    }
+    .search-container input {
+      width: 50%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    .company-list {
+      padding: 20px;
+    }
+    .company {
+      background-color: #222;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 5px;
+      width: 80%;
+    }
+    .company h2 {
+      margin-top: 0;
+    }
+    footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Entreprises d'Électricité en Seine-Maritime (76)</h1>
+  </header>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Rechercher une entreprise..." onkeyup="filterCompanies()">
+  </div>
+
+  <div class="company-list" id="companyList">
+    <div class="company">
+      <h2>DHAF Énergie (SAS)</h2>
+      <p>Adresse : 965 Route de la Ferme des Mares, 76430 Épretot</p>
+      <p>Téléphone : Non renseigné</p>
+    </div>
+    <div class="company">
+      <h2>Lambert Thierry</h2>
+      <p>Adresse : 20 Rue de l'Église, 76150 Saint-Jean-du-Cardonnay</p>
+      <p>Téléphone : Non renseigné</p>
+    </div>
+    <div class="company">
+      <h2>SEINELEC (SARL)</h2>
+      <p>Adresse : 56 Sente des Oiseaux, 76160 Saint-Jacques-sur-Darnétal</p>
+      <p>Téléphone : Non renseigné</p>
+    </div>
+    <div class="company">
+      <h2>NLEC (SARL)</h2>
+      <p>Adresse : 7 Route de Pierreville, 76730 Bacqueville-en-Caux</p>
+      <p>Téléphone : Non renseigné</p>
+    </div>
+    <div class="company">
+      <h2>ARIFI Aghiles</h2>
+      <p>Adresse : 21 Rue Malouet, 76100 Rouen</p>
+      <p>Téléphone : Non renseigné</p>
+    </div>
+    <div class="company">
+      <h2>Lemoine Steve</h2>
+      <p>Adresse : 5 Rue d'Épremesnil, 76600 Le Havre</p>
+      <p>Téléphone : Non renseigné</p>
+    </div>
+    <!-- Ajoutez d'autres entreprises ici -->
+  </div>
+
+  <footer>
+    Développé par Théo M
+  </footer>
+
+  <script>
+    function filterCompanies() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const companyList = document.getElementById('companyList');
+      const companies = companyList.getElementsByClassName('company');
+
+      for (let i = 0; i < companies.length; i++) {
+        const company = companies[i];
+        const text = company.textContent || company.innerText;
+        company.style.display = text.toLowerCase().includes(filter) ? '' : 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
