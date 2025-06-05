@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Entreprises d'Électricité en Seine-Maritime (76)</title>
+  <title>Entreprises d'Électricité - 76</title>
   <style>
     body {
       background-color: #000;
@@ -11,21 +11,18 @@
       margin: 0;
       padding: 0;
     }
-    header {
-      padding: 20px;
-      text-align: center;
+    header, footer {
       background-color: #111;
-    }
-    header h1 {
-      margin: 0;
+      text-align: center;
+      padding: 20px;
     }
     .search-container {
       padding: 20px;
       text-align: center;
     }
     .search-container input {
-      width: 50%;
       padding: 10px;
+      width: 60%;
       border: none;
       border-radius: 5px;
     }
@@ -34,26 +31,17 @@
     }
     .company {
       background-color: #222;
-      margin: 10px auto;
       padding: 15px;
-      border-radius: 5px;
+      margin: 10px auto;
       width: 80%;
+      border-radius: 5px;
     }
     .company h2 {
-      margin-top: 0;
-    }
-    footer {
-      background-color: #111;
-      color: #ccc;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      margin: 0 0 5px 0;
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false">
 
   <header>
     <h1>Entreprises d'Électricité en Seine-Maritime (76)</h1>
@@ -64,37 +52,17 @@
   </div>
 
   <div class="company-list" id="companyList">
+    <!-- Données fictives pour l'exemple -->
     <div class="company">
-      <h2>DHAF Énergie (SAS)</h2>
-      <p>Adresse : 965 Route de la Ferme des Mares, 76430 Épretot</p>
-      <p>Téléphone : Non renseigné</p>
+      <h2>Élec76 SARL</h2>
+      <p>Adresse : 15 rue des Champs, Rouen</p>
+      <p>Téléphone : 02 35 00 00 00</p>
     </div>
     <div class="company">
-      <h2>Lambert Thierry</h2>
-      <p>Adresse : 20 Rue de l'Église, 76150 Saint-Jean-du-Cardonnay</p>
-      <p>Téléphone : Non renseigné</p>
+      <h2>Normandie Électrique</h2>
+      <p>Adresse : 8 avenue de Normandie, Le Havre</p>
+      <p>Téléphone : 02 35 11 22 33</p>
     </div>
-    <div class="company">
-      <h2>SEINELEC (SARL)</h2>
-      <p>Adresse : 56 Sente des Oiseaux, 76160 Saint-Jacques-sur-Darnétal</p>
-      <p>Téléphone : Non renseigné</p>
-    </div>
-    <div class="company">
-      <h2>NLEC (SARL)</h2>
-      <p>Adresse : 7 Route de Pierreville, 76730 Bacqueville-en-Caux</p>
-      <p>Téléphone : Non renseigné</p>
-    </div>
-    <div class="company">
-      <h2>ARIFI Aghiles</h2>
-      <p>Adresse : 21 Rue Malouet, 76100 Rouen</p>
-      <p>Téléphone : Non renseigné</p>
-    </div>
-    <div class="company">
-      <h2>Lemoine Steve</h2>
-      <p>Adresse : 5 Rue d'Épremesnil, 76600 Le Havre</p>
-      <p>Téléphone : Non renseigné</p>
-    </div>
-    <!-- Ajoutez d'autres entreprises ici -->
   </div>
 
   <footer>
@@ -103,18 +71,28 @@
 
   <script>
     function filterCompanies() {
-      const input = document.getElementById('searchInput');
-      const filter = input.value.toLowerCase();
-      const companyList = document.getElementById('companyList');
-      const companies = companyList.getElementsByClassName('company');
-
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const companies = document.getElementsByClassName('company');
       for (let i = 0; i < companies.length; i++) {
-        const company = companies[i];
-        const text = company.textContent || company.innerText;
-        company.style.display = text.toLowerCase().includes(filter) ? '' : 'none';
+        const txt = companies[i].innerText.toLowerCase();
+        companies[i].style.display = txt.includes(input) ? "" : "none";
       }
     }
-  </script>
 
+    // Blocage basique CTRL+U, F12, etc.
+    document.addEventListener("keydown", function(e) {
+      if (
+        (e.ctrlKey && e.key.toLowerCase() === "u") || // Ctrl+U
+        (e.ctrlKey && e.shiftKey && e.key === "I") || // Ctrl+Shift+I
+        (e.key === "F12") // F12
+      ) {
+        e.preventDefault();
+        alert("Action désactivée.");
+      }
+    });
+
+    // Blocage du clic droit
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
 </body>
 </html>
